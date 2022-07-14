@@ -5,7 +5,16 @@ const express = require('express');
 const app = express();
 const publicDirectoryPath = path.join(__dirname, '../public');
 
+app.set('view enginge', 'hbs');
+
 app.use(express.static(publicDirectoryPath));
+
+app.get('', (req, res) => {
+  res.render('index.hbs', {
+    title: 'Weather App',
+    name: 'Conor Ney',
+  });
+});
 
 app.get('/help', (req, res) => {
   res.send([
