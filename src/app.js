@@ -24,7 +24,28 @@ app.get('', (req, res) => {
     name: 'Conor Ney',
   });
 });
-
+app.get('/products', (req, res) => {
+  if (!req.query.search) {
+    return res.send({
+      error: 'You must provide a search term',
+    });
+  }
+  res.send({
+    products: [],
+  });
+});
+app.get('/weather', (req, res) => {
+  if (!req.query.address) {
+    return res.send({
+      error: 'Please provide an address',
+    });
+  }
+  res.send({
+    forecast: "too hot",
+    location: "New York",
+    address: req.query.address,
+  });
+});
 app.get('/help', (req, res) => {
   res.render('help.hbs', {
     title: 'Help',
@@ -32,13 +53,13 @@ app.get('/help', (req, res) => {
   });
 });
 app.get('/help/*', (req, res) => {
-  res.render('help/404.hbs', {
+  res.render('404.hbs', {
     error: "Hmm... It seems we can't help you",
+    logosrc: '../img/batman.png',
   });
 });
 app.get('/about', (req, res) => {
   res.render('about.hbs', {
-    title: 'Help',
     title: 'About',
     name: 'Conor Ney',
   });
@@ -46,7 +67,7 @@ app.get('/about', (req, res) => {
 
 app.get('*', (req, res) => {
   res.render('404.hbs', {
-    title: "Weather App"
+    title: 'Weather App',
     error: "Could not find the page you're looking for",
   });
 });

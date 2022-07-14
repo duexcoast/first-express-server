@@ -26,3 +26,7 @@ header {
   display: flex;
   justify-content: center;
 }
+.logo {
+  height: 300px;
+  width: 300px;
+}
