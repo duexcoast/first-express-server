@@ -1,10 +1,28 @@
-body {
-  min-height: 100vh;
-  min-width: 100vh;
+header {
+  display: flex;
+  min-height: 8vh;
+  align-items: center;
+  justify-content: space-between;
+}
+.navigation {
+  justify-self: flex-end;
+  display: flex;
+  gap: 16px;
+}
+
+.section-one {
+  min-height: 86vh;
+  min-width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: coral;
   background-color: antiquewhite;
+}
+
+.footer {
+  min-height: 6vh;
+  display: flex;
+  justify-content: center;
 }
