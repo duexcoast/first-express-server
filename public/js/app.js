@@ -1,10 +1,8 @@
-import axios from './axios';
-console.log('The client-side javascript has loaded.');
-// const axios = require('axios');
-const getForecast = async () => {
-  const { data } = await axios.get('http://localhost:3000/weather/', {
-    query: {
-      address: 'Boston',
+const getForecast = async (address) => {
+  // axios loaded through CDN
+  const { data } = await axios.get('http://localhost:3000/weather', {
+    params: {
+      address: address,
     },
   });
   if (data.error) {
@@ -15,5 +13,11 @@ const getForecast = async () => {
   }
 };
 
-getForecast();
-  
+const searchForm = document.querySelector('.search-box');
+const searchBox = document.querySelector('#search');
+
+searchForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  console.log(searchBox.value);
+  getForecast(searchBox.value);
+});
