@@ -2,7 +2,7 @@
 // Renders response to the DOM
 const getForecast = async (address) => {
   // axios loaded through CDN
-  const { data } = await axios.get('http://localhost:3000/weather', {
+  const { data } = await axios.get('/weather', {
     params: {
       address: address,
     },
